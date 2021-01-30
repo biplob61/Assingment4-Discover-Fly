@@ -69,10 +69,8 @@
                     <input id="economyClassInput" class="inp-style inp-width" value="0" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <button class="plus-minus-btn"><span
-                            onclick="ticketCountHandler('economyClassInput',true)">+</span></button>
-                    <button class="plus-minus-btn"><span
-                            onclick="ticketCountHandler('economyClassInput',false)">-</span></button>
+                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('economyClassInput',true)">+</span></button>
+                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('economyClassInput',false)">-</span></button>
                 </div>
             </div>
             <div class="calculations">
@@ -114,7 +112,7 @@
 
 
         <script>
-            
+
             //ticket counting function
             function ticketCountHandler(id, isIncrease) {
                 const ticketCount = document.getElementById(id);
