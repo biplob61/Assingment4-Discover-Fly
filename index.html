@@ -55,8 +55,8 @@
                 </div>
                 
                 <div class="plus-minus-btn">
-                    <button class="plus-minus-btn"><span onclick="firstClass(true)">+</span></button>
-                    <button class="plus-minus-btn"><span onclick="firstClass(false)">-</span></button> 
+                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('firstClassInput',true)">+</span></button>
+                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('firstClassInput',false)">-</span></button> 
                 </div>
             </div>
             
@@ -67,8 +67,8 @@
                     <input id="economyClassInput" class="inp-style inp-width" value="0" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <button class="plus-minus-btn"><span onclick="economyClass(true)">+</span></button>
-                    <button class="plus-minus-btn"><span onclick="economyClass(false)">-</span></button>
+                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('economyClassInput',true)">+</span></button>
+                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('economyClassInput',false)">-</span></button>
                 </div>
             </div>
             <div class="calculations">
@@ -110,7 +110,21 @@
     <!--Thank You-->
 
     <script>
-        
+
+        function ticketCountHandler(id , isIncrease) {
+            const ticketCount = document.getElementById(id);
+            const count = parseInt(ticketCount.value);
+            let newCount = 0;
+            if (isIncrease == true){
+                newCount = count + 1;
+            }
+            if (isIncrease == false && count > 0) {
+                newCount = count - 1;
+            }
+            ticketCount.value = newCount;
+            return ticketCountHandler;
+        }
+        /*
         //firstclass
         function firstClass(isIncrease){
             const firstClassInput = document.getElementById("firstClassInput");
@@ -125,7 +139,6 @@
             firstClassInput.value = newCount;
         };
 
-
         //econmyclass
         function economyClass(isIncrease){
             const economyClassInput = document.getElementById("economyClassInput");
@@ -138,7 +151,8 @@
                 newCount = count - 1;
             }
             economyClassInput.value = newCount;
-        };
+        };*/
+        
         // document.getElementById("firstClassIncreaseBtn").addEventListener("click",function(){
         //     //console.log("clicked it");
         //     const firstClassInput = document.getElementById("firstClassInput");
