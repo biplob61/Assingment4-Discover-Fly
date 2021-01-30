@@ -27,7 +27,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main id="homePageArea" class="main-content container">
         <div class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
@@ -53,17 +53,16 @@
                     <label for="">First Class ($150)</label>
                     <input id="firstClassInput" class="inp-style inp-width" value="0" type="number" name="">
                 </div>
-
                 <div class="plus-minus-btn">
-                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('firstClassInput',true)">+</span></button>
-                    <button class="plus-minus-btn"><span onclick="ticketCountHandler('firstClassInput',false)">-</span></button>
+                    <button class="plus-minus-btn"><span
+                            onclick="ticketCountHandler('firstClassInput',true)">+</span></button>
+                    <button class="plus-minus-btn"><span
+                            onclick="ticketCountHandler('firstClassInput',false)">-</span></button>
                 </div>
             </div>
-
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-
                     <input id="economyClassInput" class="inp-style inp-width" value="0" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
@@ -98,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="bookingButton" class="btn-style">Book Now</button>
         </div>
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
@@ -106,44 +105,63 @@
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
-        </section>
+    </main>
 
+    <section class="confirmation-area">
+        <div id="confirmationMassage">
+            <h1>CONGRATULATION!!</h1>
+            <br>
+            <h3>Your have booked your tickets successfully</h3>
+            <br>
+            <h2>Grab Your Tickets Now </h2>
+        </div>
+    </section>
 
-        <script>
-
-            //ticket counting function
-            function ticketCountHandler(id, isIncrease) {
-                const ticketCount = document.getElementById(id);
-                const count = parseInt(ticketCount.value);
-                let newCount = 0;
-                if (isIncrease == true) {
-                    newCount = count + 1;
-                }
-                if (isIncrease == false && count > 0) {
-                    newCount = count - 1;
-                }
-                ticketCount.value = newCount;
-                totalCalculator();
+    <script>
+        //total ticket counting function
+        function ticketCountHandler(id, isIncrease) {
+            const ticketCount = document.getElementById(id);
+            const count = parseInt(ticketCount.value);
+            let newCount = 0;
+            if (isIncrease == true) {
+                newCount = count + 1;
             }
-
-
-            //total cost counting function
-            function totalCalculator() {
-                const firstClassCount = document.getElementById("firstClassInput");
-                const firstClassInput = parseInt(firstClassCount.value);
-                const firstClassTotal = firstClassInput * 150;
-                const economyClassCount = document.getElementById("economyClassInput");
-                const economyClassInput = parseInt(economyClassCount.value);
-                const economyClassTotal = economyClassInput * 100;
-                let totalTicketPrice = firstClassTotal + economyClassTotal;
-                document.getElementById("subtotalPrice").innerText = totalTicketPrice;
-                let totalVat = totalTicketPrice / 10;
-                document.getElementById("totalVat").innerText = totalVat;
-                let totalCost = totalTicketPrice + totalVat;
-                document.getElementById("totalCost").innerText = totalCost;
+            if (isIncrease == false && count > 0) {
+                newCount = count - 1;
             }
+            ticketCount.value = newCount;
+            totalCalculator();
+        }
 
-        </script>
+
+        //total cost counting function
+        function totalCalculator() {
+            const firstClassCount = document.getElementById("firstClassInput");
+            const firstClassInput = parseInt(firstClassCount.value);
+            const firstClassTotal = firstClassInput * 150;
+            const economyClassCount = document.getElementById("economyClassInput");
+            const economyClassInput = parseInt(economyClassCount.value);
+            const economyClassTotal = economyClassInput * 100;
+            let totalTicketPrice = firstClassTotal + economyClassTotal;
+            document.getElementById("subtotalPrice").innerText = totalTicketPrice;
+            let totalVat = totalTicketPrice / 10;
+            document.getElementById("totalVat").innerText = totalVat;
+            let totalCost = totalTicketPrice + totalVat;
+            document.getElementById("totalCost").innerText = totalCost;
+        }
+
+
+        //booking button event handler
+        const bookingButton = document.getElementById("bookingButton");
+        bookingButton.addEventListener("click", function () {
+            const homePageArea = document.getElementById("homePageArea");
+            homePageArea.style.display = "none";
+            const confirmationMassage = document.getElementById("confirmationMassage");
+            confirmationMassage.style.display = "block";
+        })
+
+
+    </script>
 </body>
 
 </html>
