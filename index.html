@@ -55,7 +55,8 @@
                 </div>
                 
                 <div class="plus-minus-btn">
-                    <button class="plus-minus-btn"><span onclick="firstClass(true)">+</span></button> <button class="plus-minus-btn"><span onclick="firstClass(false)">-</span></button> 
+                    <button class="plus-minus-btn"><span onclick="firstClass(true)">+</span></button>
+                    <button class="plus-minus-btn"><span onclick="firstClass(false)">-</span></button> 
                 </div>
             </div>
             
@@ -63,22 +64,13 @@
                 <div>
                     <label for="">Economy ($100)</label>
                     
-                    <input class="inp-style inp-width" value="0" type="number" name="">
+                    <input id="economyClassInput" class="inp-style inp-width" value="0" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <button class="plus-minus-btn"><span onclick="economyClass(true)">+</span></button>
+                    <button class="plus-minus-btn"><span onclick="economyClass(false)">-</span></button>
                 </div>
             </div>
-            <!-- <div class="input-group f-class">
-                <div>
-                    <label for="">Economy ($100)</label>
-                    
-                    <input id="firstClassInput" class="inp-style inp-width" value="0" type="number" name="">
-                </div>
-                <div class="plus-minus-btn">
-                    <button class="plus-minus-btn"><span onclick="firstClass(true)">+</span></button> <button class="plus-minus-btn"><span onclick="firstClass(false)">-</span></button> 
-                </div>
-            </div> -->
             <div class="calculations">
                 <div class="amount">
                     <div class="left">
@@ -119,7 +111,7 @@
 
     <script>
         
-
+        //firstclass
         function firstClass(isIncrease){
             const firstClassInput = document.getElementById("firstClassInput");
             const count = parseInt(firstClassInput.value);
@@ -131,6 +123,21 @@
                 newCount = count - 1;
             }
             firstClassInput.value = newCount;
+        };
+
+
+        //econmyclass
+        function economyClass(isIncrease){
+            const economyClassInput = document.getElementById("economyClassInput");
+            const count = parseInt(economyClassInput.value);
+            let newCount = 0;
+            if (isIncrease == true){
+                newCount = count + 1;
+            }
+            if (isIncrease == false && count > 0) {
+                newCount = count - 1;
+            }
+            economyClassInput.value = newCount;
         };
         // document.getElementById("firstClassIncreaseBtn").addEventListener("click",function(){
         //     //console.log("clicked it");
